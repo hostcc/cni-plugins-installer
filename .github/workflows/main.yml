@@ -20,7 +20,7 @@ jobs:
               --jq 'map(select(.prerelease==false and .draft==false))|[.[].tag_name]|sort|reverse|[.[range(0,3)]]|@json')
           echo "value=$latest_versions" >> "$GITHUB_OUTPUT"
     outputs:
-      latest-versions: steps.upstream-versions.outputs.value
+      latest-versions: ${{ steps.upstream-versions.outputs.value }}
 
   docker-publish:
     name: Build and publish Docker images
