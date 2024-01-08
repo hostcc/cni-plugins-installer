@@ -31,7 +31,7 @@ jobs:
       packages: write
     strategy:
       matrix:
-        version: ${{ needs.latest-versions.outputs.latest-versions }}
+        version: ${{ fromJson(needs.latest-versions.outputs.latest-versions) }}
     steps:
       - name: Checkout the code
         uses: actions/checkout@v3
